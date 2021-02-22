@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/tiltleFragment">
+
+    <fragment
+        android:id="@+id/tiltleFragment"
+        android:name="com.liyaan.calculationtest.fragment.TiltleFragment"
+        android:label="@string/title_nav_message"
+        tools:layout="@layout/fragment_tiltle">
+        <action
+            android:id="@+id/action_tiltleFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.liyaan.calculationtest.fragment.QuestionFragment"
+        android:label="@string/question_nav_message"
+        tools:layout="@layout/fragment_question">
+        <action
+            android:id="@+id/action_questionFragment_to_winFragment"
+            app:destination="@id/winFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_loseFragment"
+            app:destination="@id/loseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/winFragment"
+        android:name="com.liyaan.calculationtest.fragment.WinFragment"
+        android:label="@string/win_nav_message"
+        tools:layout="@layout/fragment_win">
+        <action
+            android:id="@+id/action_winFragment_to_tiltleFragment"
+            app:destination="@id/tiltleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loseFragment"
+        android:name="com.liyaan.calculationtest.fragment.LoseFragment"
+        android:label="@string/lose_nav_message"
+        tools:layout="@layout/fragment_lose">
+        <action
+            android:id="@+id/action_loseFragment_to_tiltleFragment"
+            app:destination="@id/tiltleFragment" />
+    </fragment>
+</navigation>
