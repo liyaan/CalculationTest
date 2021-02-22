@@ -39,4 +39,10 @@
     <string name="question_nav_message">Testing</string>
     <string name="win_nav_message">Win</string>
     <string name="lose_nav_message">Lose</string>
+
+    <string name="button_room_one">Insert</string>
+    <string name="button_room_two">Update</string>
+    <string name="button_room_three">Delete</string>
+    <string name="button_room_four">Delete All</string>
+    <string name="button_room_five">Select All</string>
 </resources>

@@ -21,4 +21,10 @@
     <string name="question_nav_message">测试中</string>
     <string name="win_nav_message">胜利</string>
     <string name="lose_nav_message">失败</string>
+
+    <string name="button_room_one">插入</string>
+    <string name="button_room_two">修改</string>
+    <string name="button_room_three">删除</string>
+    <string name="button_room_four">删除所有</string>
+    <string name="button_room_five">查询</string>
 </resources>
