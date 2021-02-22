@@ -1,6 +1,7 @@
 package com.liyaan.calculationtest.fragment
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -84,13 +85,20 @@ class QuestionFragment : Fragment() {
                 }else{
                     controlle.navigate(R.id.action_questionFragment_to_loseFragment)
                 }
+                mViewModel.GO_TO_TIME = 0
             }
         }
+        if (mViewModel.GO_TO_TIME==0L){
+            mViewModel.GO_TO_TIME = SystemClock.elapsedRealtime()
+            lifecycle.addObserver(binding.textView14)
+        }else{
+            binding.textView14.base = mViewModel.GO_TO_TIME
+        }
+        binding.textView14.start();
 //        binding.button.setOnClickListener {
 //            val controlle = Navigation.findNavController(it)
 //            controlle.navigate(R.id.action_tiltleFragment_to_questionFragment)
 //        }
         return binding.root
     }
-
 }

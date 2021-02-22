@@ -21,6 +21,7 @@ class MyViewModel(application: Application,handle:SavedStateHandle) : AndroidVie
     private val KEY_CURRENT_SCORE = "key_current_score"
 
     private val LEVEL= 100
+    var GO_TO_TIME:Long = 0
     var win_flag:Boolean = false
     init {
         if (!handle.contains(KEY_HIGH_SCORE)){
@@ -31,6 +32,7 @@ class MyViewModel(application: Application,handle:SavedStateHandle) : AndroidVie
             handle.set(KEY_OPERATOR,"+")
             handle.set(KEY_ANSWER,0)
             handle.set(KEY_CURRENT_SCORE,0)
+//            handle.set(GO_TO_TIME,0)
         }
         this.handle = handle
     }
@@ -52,6 +54,7 @@ class MyViewModel(application: Application,handle:SavedStateHandle) : AndroidVie
     fun getCurrentScore():MutableLiveData<Int>{
         return handle.getLiveData(KEY_CURRENT_SCORE)
     }
+
     fun generator(){
         val random = Random()
         val x:Int = random.nextInt(LEVEL)+1

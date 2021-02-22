@@ -319,5 +319,15 @@
             app:layout_constraintStart_toEndOf="@+id/button11"
             app:layout_constraintTop_toTopOf="@+id/button11" />
 
+        <com.liyaan.calculationtest.view.MyChronome
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/guideline7"
+            tools:text="计时器" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

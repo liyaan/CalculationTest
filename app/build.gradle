@@ -41,4 +41,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha02'
 //LifecycleObserver 与 LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha02'
+
+    implementation "android.arch.lifecycle:common-java8:$lifecycle_version"
 }
