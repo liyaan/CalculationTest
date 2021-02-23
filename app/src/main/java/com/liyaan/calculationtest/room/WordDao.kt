@@ -1,5 +1,6 @@
 package com.liyaan.calculationtest.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -17,5 +18,6 @@ interface WordDao {
     fun deleteAllWords()
 
     @Query("SELECT * FROM WORDENTITY ORDER BY ID DESC")
-    fun getAllWords():MutableList<WordEntity>
+//    fun getAllWords():MutableList<WordEntity>
+    fun getAllWords():LiveData<MutableList<WordEntity>>
 }

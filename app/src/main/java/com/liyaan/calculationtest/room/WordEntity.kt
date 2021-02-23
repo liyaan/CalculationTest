@@ -12,6 +12,8 @@ class WordEntity {
     var name:String
     @ColumnInfo(name = "userpassword")
     var password:String
+    @ColumnInfo(name = "password_invisibe")
+    var passwordInvisibe:Boolean = false
 
     constructor(name: String, password: String) {
         this.name = name
