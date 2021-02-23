@@ -65,12 +65,7 @@ class MyAdapter(roomViewModel:RoomViewModel): RecyclerView.Adapter<MyAdapter.MyV
         holder.tvNumber.text = "${list.get(position).id}"
         holder.tvEnglish.text = list.get(position).name
         holder.tvCn.text = list.get(position).password
-        holder.item_constraint.setOnClickListener {
-            val uri = Uri.parse("https://m.youdao.com/dict?le=eng&q=${list.get(position).name}")
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = uri
-            holder.itemView.context.startActivity(intent)
-        }
+
         if (list.get(position).passwordInvisibe){
             holder.tvCn.visibility = View.GONE
             holder.mSwitch.isChecked = list.get(position).passwordInvisibe
