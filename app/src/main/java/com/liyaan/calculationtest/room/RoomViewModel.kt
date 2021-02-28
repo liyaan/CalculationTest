@@ -2,6 +2,7 @@ package com.liyaan.calculationtest.room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 
 class RoomViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -21,5 +22,11 @@ class RoomViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteAllWord(){
         wordRepostory.deleteAllWord()
 //        DeleteAllAsyncTask(wordDao!!).execute()
+    }
+    fun findWordsWithPattern(pattern:String): LiveData<MutableList<WordEntity>> {
+       return wordRepostory.findWordsWithPattern(pattern)
+    }
+    fun getAllWords():LiveData<MutableList<WordEntity>>{
+        return wordRepostory.getAllWords()
     }
 }

@@ -17,7 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RoomActivity"></activity>
+        <activity android:name=".RoomActivity"
+            android:windowSoftInputMode="adjustNothing"></activity>
+        <activity android:name=".ButtomNavActivity"
+            android:windowSoftInputMode="adjustNothing"></activity>
     </application>
 
 </manifest>

@@ -20,4 +20,8 @@ interface WordDao {
     @Query("SELECT * FROM WORDENTITY ORDER BY ID DESC")
 //    fun getAllWords():MutableList<WordEntity>
     fun getAllWords():LiveData<MutableList<WordEntity>>
+
+    @Query("SELECT * FROM WORDENTITY WHERE username LIKE :pattern ORDER BY ID DESC")
+//    fun getAllWords():MutableList<WordEntity>
+    fun findWordPattern(pattern:String):LiveData<MutableList<WordEntity>>
 }

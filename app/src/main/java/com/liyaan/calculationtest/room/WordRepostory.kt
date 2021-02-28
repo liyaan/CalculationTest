@@ -28,6 +28,12 @@ class WordRepostory(context: Context) {
     fun deleteAllWord(){
         DeleteAllAsyncTask(wordDao!!).execute()
     }
+    fun getAllWords():LiveData<MutableList<WordEntity>>{
+        return wordDao!!.getAllWords()
+    }
+    fun findWordsWithPattern(pattern:String):LiveData<MutableList<WordEntity>>{
+        return wordDao!!.findWordPattern("%${pattern}%")
+    }
     inner class InsertAsyncTask(wordDao: WordDao): AsyncTask<WordEntity, Void, Void>(){
         val wordDao: WordDao = wordDao
         override fun doInBackground(vararg params: WordEntity?): Void? {

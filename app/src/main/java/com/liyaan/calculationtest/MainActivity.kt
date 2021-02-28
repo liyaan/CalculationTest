@@ -20,7 +20,7 @@ class MainActivity: AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this,controler!!)
         button19 = findViewById(R.id.button19)
         button19!!.setOnClickListener {
-            val intent = Intent(this@MainActivity,RoomActivity::class.java)
+            val intent = Intent(this@MainActivity,ButtomNavActivity::class.java)
             startActivity(intent)
         }
     }
