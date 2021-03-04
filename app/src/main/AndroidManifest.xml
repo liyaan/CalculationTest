@@ -21,6 +21,8 @@
             android:windowSoftInputMode="adjustNothing"></activity>
         <activity android:name=".ButtomNavActivity"
             android:windowSoftInputMode="adjustNothing"></activity>
+        <activity android:name=".paging.PagingActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
