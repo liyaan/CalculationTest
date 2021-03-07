@@ -1,6 +1,5 @@
 package com.liyaan.calculationtest
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.liyaan.calculationtest.gallery.GalleryActivity
 import com.liyaan.calculationtest.paging.PagingActivity
+import com.liyaan.calculationtest.serializable.SeriaLizableActivity
 
 class MainActivity: AppCompatActivity() {
     var controler:NavController? = null
@@ -21,7 +22,7 @@ class MainActivity: AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this,controler!!)
         button19 = findViewById(R.id.button19)
         button19!!.setOnClickListener {
-            val intent = Intent(this@MainActivity,PagingActivity::class.java)
+            val intent = Intent(this@MainActivity, GalleryActivity::class.java)
             startActivity(intent)
         }
     }
