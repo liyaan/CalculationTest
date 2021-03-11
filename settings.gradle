@@ -1,2 +1,3 @@
+include ':viewpagetwo'
 include ':app'
 rootProject.name = "CalculationTest"
