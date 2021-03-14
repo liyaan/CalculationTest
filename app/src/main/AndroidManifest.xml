@@ -36,6 +36,7 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".gallery.GalleryActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:screenOrientation="portrait"></activity>
     </application>
 

@@ -13,5 +13,9 @@ data class Paxabay(
 @Parcelize data class PhotoItem(
         val id: Int,
         @SerializedName("webformatURL")val fullUrl: String,
-        @SerializedName("previewURL")val previewUrl: String
+        @SerializedName("previewURL")val previewUrl: String,
+        @SerializedName("webformatHeight") val photoHeight:Int,
+        @SerializedName("user") val photoUser:String,
+        @SerializedName("likes") val photoLikes:Int,
+        @SerializedName("favorites") val photoFavorites:Int
 ):Parcelable

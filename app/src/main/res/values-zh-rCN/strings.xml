@@ -28,4 +28,5 @@
     <string name="button_room_four">删除所有</string>
     <string name="button_room_five">查询</string>
     <string name="todo">fragment_add_icon</string>
+    <string name="pager_photo_position">%d / %d</string>
 </resources>
