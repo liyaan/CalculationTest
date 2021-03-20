@@ -2,6 +2,7 @@ package com.liyaan.calculationtest.gallery.adapter
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +18,20 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.liyaan.calculationtest.R
 import com.liyaan.calculationtest.gallery.bean.PhotoItem
+import com.liyaan.calculationtest.gallery.model.DATA_STATUS_CAN_LOAD_MORE
+import com.liyaan.calculationtest.gallery.model.DATA_STATUS_NETWORK_ERROR
+import com.liyaan.calculationtest.gallery.model.DATA_STATUS_NO_MORE
+import com.liyaan.calculationtest.gallery.model.GalleryViewModel
 import kotlinx.android.synthetic.main.fragment_pager_photo.view.*
+import kotlinx.android.synthetic.main.gallery_footview.view.*
 import kotlinx.android.synthetic.main.item_grallery_cell.view.*
 
-class GalleryAdapter:ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
+class GalleryAdapter(val alleryViewModel: GalleryViewModel):ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
     companion object{
         const val NORMAL_VIEW_TYPE = 0
         const val FOOTER_VIEW_TYPE = 1
     }
+    var footerViewStatus = DATA_STATUS_CAN_LOAD_MORE
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val holder:MyViewHolder
         if (viewType== NORMAL_VIEW_TYPE){
@@ -45,6 +52,11 @@ class GalleryAdapter:ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
             holder = MyViewHolder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.gallery_footview,parent,false).also {
                         (it.layoutParams as StaggeredGridLayoutManager.LayoutParams).isFullSpan = true
+                        it.setOnClickListener {itemView->
+                            itemView.progressBar.visibility = View.VISIBLE
+                            itemView.textView16.text = "正在加载"
+                            alleryViewModel.getData()
+                        }
                     })
         }
         return holder
@@ -58,6 +70,26 @@ class GalleryAdapter:ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if (position==itemCount-1){
+            with(holder.itemView){
+                when(footerViewStatus){
+                    DATA_STATUS_CAN_LOAD_MORE->{
+                        progressBar.visibility = View.VISIBLE
+                        textView16.text = "正在加载"
+                        isClickable = false
+                    }
+                    DATA_STATUS_NO_MORE->{
+                        Log.i("aaaaaa","footerViewStatus=$footerViewStatus")
+                        progressBar.visibility = View.GONE
+                        textView16.text = "全部加载完毕，滚动到底部"
+                        isClickable = false
+                    }
+                    DATA_STATUS_NETWORK_ERROR->{
+                        progressBar.visibility = View.GONE
+                        textView16.text = "网络故障，稍后重试"
+                        isClickable = true
+                    }
+                }
+            }
             return
         }
         val photoItem = getItem(position)
@@ -93,11 +125,11 @@ class GalleryAdapter:ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
 
     object DIFFCALLBACK:DiffUtil.ItemCallback<PhotoItem>(){
         override fun areItemsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-            return oldItem==newItem
+            return oldItem.id==newItem.id
         }
 
         override fun areContentsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem == newItem
         }
 
     }
